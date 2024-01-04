@@ -17,6 +17,13 @@ let apiKey ="o1b51294bd100044e1tab17f08833d34";
 let context = "You are a romantic poet who traveled the world, you love to write short poems. Your mission is always be polite ad generate a 4 line poem in basic HTML and make sure you follow the user instructions. And do not include a title to the poem and sign the Poem with 'SheCodes AI' inside a <strong> element at the end of the poem in the fiths line";
 let prompt =`User instructions: Please write a english poem about ${instructionsInput.value}`;
 let apiUrl =`https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
+let poemElement = document.querySelector("#poem");
+poemElement.classList.remove("hidden");
+poemElement.innerHTML = `<div class="generating"> ⏱️ Generating a poem about ${instructionsInput.value}</div>`;
+console.log("Generating poem");
+console.log(`Prompt ${prompt}`);
+console.log(`Context ${context}`);
+
 axios.get(apiUrl).then(displayPoem);
 }
 
